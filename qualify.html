@@ -10,12 +10,50 @@
     <link rel="icon" type="image/x-icon" href="favicon.ico" />
     <title>Auto Coverage Assistant - Save on Car Insurance</title>
     <link rel="stylesheet" href="styles.css" />
+
+    <!-- Facebook Pixel Code -->
+    <script>
+      !(function (f, b, e, v, n, t, s) {
+        if (f.fbq) return;
+        n = f.fbq = function () {
+          n.callMethod
+            ? n.callMethod.apply(n, arguments)
+            : n.queue.push(arguments);
+        };
+        if (!f._fbq) f._fbq = n;
+        n.push = n;
+        n.loaded = !0;
+        n.version = "2.0";
+        n.queue = [];
+        t = b.createElement(e);
+        t.async = !0;
+        t.src = v;
+        s = b.getElementsByTagName(e)[0];
+        s.parentNode.insertBefore(t, s);
+      })(
+        window,
+        document,
+        "script",
+        "https://connect.facebook.net/en_US/fbevents.js"
+      );
+      fbq("init", "994557359531980");
+      fbq("track", "PageView");
+    </script>
+    <noscript>
+      <img
+        height="1"
+        width="1"
+        style="display: none"
+        src="https://www.facebook.com/tr?id=994557359531980&ev=PageView&noscript=1"
+      />
+    </noscript>
+    <!-- DO NOT MODIFY -->
+    <!-- End Facebook Pixel Code -->
   </head>
   <body>
     <div class="container">
       <!-- Header Section -->
       <header class="header">
-        <img src="logo.png" alt="Logo" class="header-logo" />
         <h1 class="main-title">Auto Coverage Assistant</h1>
       </header>
 
@@ -34,11 +72,13 @@
             <a
               href="https://vfwc1.bemobtrcks.com/go/43ae3a3c-5956-4cde-82dd-c77817011175"
               class="age-button"
+              onclick="fbq('track', 'Lead', {age_group: '18-34'});"
               >18 to 34</a
             >
             <a
               href="https://vfwc1.bemobtrcks.com/go/43ae3a3c-5956-4cde-82dd-c77817011175"
               class="age-button"
+              onclick="fbq('track', 'Lead', {age_group: '35-44'});"
               >35 to 44</a
             >
           </div>
@@ -46,11 +86,13 @@
             <a
               href="https://vfwc1.bemobtrcks.com/go/43ae3a3c-5956-4cde-82dd-c77817011175"
               class="age-button"
+              onclick="fbq('track', 'Lead', {age_group: '45-54'});"
               >45 to 54</a
             >
             <a
               href="https://vfwc1.bemobtrcks.com/go/43ae3a3c-5956-4cde-82dd-c77817011175"
               class="age-button"
+              onclick="fbq('track', 'Lead', {age_group: '55-64'});"
               >55 to 64</a
             >
           </div>
@@ -58,6 +100,7 @@
             <a
               href="https://vfwc1.bemobtrcks.com/go/43ae3a3c-5956-4cde-82dd-c77817011175"
               class="age-button"
+              onclick="fbq('track', 'Lead', {age_group: '65+'});"
               >65+</a
             >
           </div>
@@ -128,7 +171,10 @@
         <div class="reviews-grid">
           <div class="review-card">
             <div class="review-header">
-              <img src="jen.jpeg" alt="Grace K." class="review-avatar" />
+              <div class="avatar-wrapper">
+                <img src="jen.jpeg" alt="Grace K." class="review-avatar" />
+                <img src="g.png" alt="Google" class="google-badge" />
+              </div>
               <div class="review-author-info">
                 <strong>Grace K.</strong>
                 <span class="verified-badge">✓ Verified Buyer</span>
@@ -143,7 +189,10 @@
 
           <div class="review-card">
             <div class="review-header">
-              <img src="arthurt.jpeg" alt="Arthur I." class="review-avatar" />
+              <div class="avatar-wrapper">
+                <img src="arthurt.jpeg" alt="Arthur I." class="review-avatar" />
+                <img src="g.png" alt="Google" class="google-badge" />
+              </div>
               <div class="review-author-info">
                 <strong>Arthur I.</strong>
                 <span class="verified-badge">✓ Verified Buyer</span>
