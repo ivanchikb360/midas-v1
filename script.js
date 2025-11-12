@@ -28,7 +28,7 @@ const allQuotes = [...quotes, ...additionalQuotes];
 // Typing animation for intro message
 function typeIntroMessage() {
     const introTextElement = document.getElementById('intro-text');
-    const message = "Hi! Compare top auto insurance quotes in your area with a quick, simple form.";
+    const message = "Hi! Compare top auto insurance quotes nationwide in just 60 seconds—no obligation.";
     let index = 0;
     
     function type() {
