@@ -1,0 +1,144 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Demo bank account dashboard showing grant deposit activity."
+    />
+    <link rel="icon" type="image/x-icon" href="favicon.ico" />
+    <title>Accounts</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body class="bank-page">
+    <main class="bank-app" aria-label="Bank account dashboard">
+      <header class="bank-header">
+        <div>
+          <p class="bank-eyebrow"></p>
+          <h1>Good afternoon</h1>
+        </div>
+        <button class="bank-profile" aria-label="Open profile">JD</button>
+      </header>
+
+      <section class="bank-total-card" aria-label="Total available balance">
+        <div class="bank-card-topline">
+          <span>Total available</span>
+          <span>Updated now</span>
+        </div>
+        <strong>$92,090.10</strong>
+        <p>Across checking, savings, and deposits</p>
+      </section>
+
+      <section class="bank-actions" aria-label="Quick actions">
+        <a href="go.html">
+          <span>&#8595;</span>
+          Deposit
+        </a>
+        <a href="go.html">
+          <span>&#8594;</span>
+          Transfer
+        </a>
+        <a href="go.html">
+          <span>$</span>
+          Pay
+        </a>
+        <a href="index.html">
+          <span>&#10003;</span>
+          Details
+        </a>
+      </section>
+
+      <section class="bank-grant-alert">
+        <div>
+          <span class="bank-alert-icon">&#10003;</span>
+        </div>
+        <div>
+          <h2>VA Grant Deposit Matched</h2>
+          <p>Disbursement review is pending for the approved grant amount.</p>
+        </div>
+        <strong>+$53,750.00</strong>
+      </section>
+
+      <section class="bank-section">
+        <div class="bank-section-heading">
+          <h2>Accounts</h2>
+          <a href="go.html">View all</a>
+        </div>
+
+        <div class="bank-account-list" aria-label="Accounts">
+          <article class="bank-account-card">
+            <div class="bank-account-icon">C</div>
+            <div>
+              <h3>Personal Checking</h3>
+              <p>Everyday account ••••9022</p>
+            </div>
+            <div class="bank-balance">
+              <strong>$12,840.10</strong>
+              <span>available</span>
+            </div>
+          </article>
+
+          <article class="bank-account-card">
+            <div class="bank-account-icon bank-savings-icon">S</div>
+            <div>
+              <h3>Personal Savings</h3>
+              <p>High-yield savings ••••1314</p>
+            </div>
+            <div class="bank-balance">
+              <strong>$25,500.00</strong>
+              <span>available</span>
+            </div>
+          </article>
+
+          <article class="bank-account-card bank-highlight-card">
+            <div class="bank-account-icon bank-grant-icon">G</div>
+            <div>
+              <h3>VA Grant Deposit</h3>
+              <p>Processing • estimated 3-5 business days</p>
+            </div>
+            <div class="bank-balance bank-positive">
+              <strong>+$53,750.00</strong>
+              <span>pending</span>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section class="bank-section bank-activity-section">
+        <div class="bank-section-heading">
+          <h2>Recent activity</h2>
+          <a href="go.html">Search</a>
+        </div>
+
+        <div class="bank-activity-list">
+          <article>
+            <span class="bank-activity-dot"></span>
+            <div>
+              <h3>Grant match confirmation</h3>
+              <p>Today at 12:45 PM</p>
+            </div>
+            <strong class="bank-positive">+$53,750.00</strong>
+          </article>
+          <article>
+            <span class="bank-activity-dot bank-muted-dot"></span>
+            <div>
+              <h3>Mobile check deposit</h3>
+              <p>Yesterday</p>
+            </div>
+            <strong>+$840.10</strong>
+          </article>
+        </div>
+      </section>
+
+      <nav class="bank-bottom-nav" aria-label="Bank navigation">
+        <a class="bank-nav-active" href="bank.html">Accounts</a>
+        <a href="go.html">Move Money</a>
+        <a href="go.html">Support</a>
+      </nav>
+    </main>
+
+    <script defer src="/_vercel/insights/script.js"></script>
+    <script defer src="/_vercel/speed-insights/script.js"></script>
+  </body>
+</html>
