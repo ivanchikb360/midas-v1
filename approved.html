@@ -1,0 +1,151 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Application approved for the 2025 Veterans Home Improvement Benefit."
+    />
+    <link rel="icon" type="image/x-icon" href="favicon.ico" />
+    <title>Application Approved | 2025 Veterans Home Improvement Benefit</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body class="approved-page">
+    <main class="approved-shell" aria-label="Application approved">
+      <div class="approved-check" aria-hidden="true">
+        <span>&#10003;</span>
+      </div>
+
+      <h1>Application Approved!</h1>
+
+      <p class="approved-greeting">
+        Dear <strong id="approved-name">Mickey</strong>, thank you for
+        registering for the 2025 Veterans Home Improvement Benefit. We thank
+        you for your service.
+      </p>
+
+      <section class="approved-card" aria-label="Approval details">
+        <h2>
+          We are pleased to inform you that your benefit application has been
+          approved!
+        </h2>
+        <p>
+          You're eligible to receive home upgrades through this exclusive
+          benefit.
+        </p>
+
+        <div class="approved-amount-card">
+          <strong
+            class="approved-amount"
+            data-target="40000"
+            data-duration="1800"
+            aria-live="polite"
+          >
+            $0
+          </strong>
+          <span>Total Value of Upgrade</span>
+        </div>
+
+        <div class="approved-timer-card" aria-label="Time remaining to claim">
+          <span class="approved-timer-label">Offer expires in</span>
+          <strong class="approved-timer">
+            <span id="approved-timer-value">05:00</span>
+            <span class="approved-timer-units">SECONDS</span>
+          </strong>
+          <span class="approved-timer-note">
+            Claim before time runs out to secure your upgrade
+          </span>
+        </div>
+      </section>
+
+      <section class="approved-bathroom" aria-label="Your dream bathroom">
+        <img
+          src="bathroom.png"
+          alt="Modern accessible bathroom with a walk-in shower and grab bars"
+        />
+        <div class="approved-bathroom-overlay">
+          <p>Your Dream Bathroom Awaits</p>
+        </div>
+      </section>
+
+      <a class="approved-cta" href="go.html">Claim my benefit now &rarr;</a>
+
+      <p class="approved-disclaimer">
+        Editor's note: This page contains informational advertorial content
+        and is not affiliated with or endorsed by any government agency.
+        Eligibility and benefit amounts vary by program, location, and
+        available funds.
+      </p>
+    </main>
+
+    <script>
+      (function () {
+        function easeOutCubic(t) {
+          return 1 - Math.pow(1 - t, 3);
+        }
+
+        function formatCurrency(value) {
+          return "$" + Math.round(value).toLocaleString("en-US");
+        }
+
+        function animateCount(el) {
+          var target = parseFloat(el.getAttribute("data-target")) || 0;
+          var duration = parseFloat(el.getAttribute("data-duration")) || 1500;
+          var start = null;
+
+          function step(timestamp) {
+            if (start === null) start = timestamp;
+            var elapsed = timestamp - start;
+            var progress = Math.min(elapsed / duration, 1);
+            var eased = easeOutCubic(progress);
+            el.textContent = formatCurrency(target * eased);
+            if (progress < 1) {
+              requestAnimationFrame(step);
+            } else {
+              el.textContent = formatCurrency(target);
+              el.classList.add("approved-amount-done");
+            }
+          }
+
+          requestAnimationFrame(step);
+        }
+
+        function startCountdown() {
+          var valueEl = document.getElementById("approved-timer-value");
+          if (!valueEl) return;
+          var remaining = 5 * 60;
+
+          function tick() {
+            var minutes = Math.floor(remaining / 60);
+            var seconds = remaining % 60;
+            var mm = minutes < 10 ? "0" + minutes : "" + minutes;
+            var ss = seconds < 10 ? "0" + seconds : "" + seconds;
+            valueEl.textContent = mm + ":" + ss;
+            if (remaining <= 0) {
+              clearInterval(timerId);
+              return;
+            }
+            remaining -= 1;
+          }
+
+          tick();
+          var timerId = setInterval(tick, 1000);
+        }
+
+        document.addEventListener("DOMContentLoaded", function () {
+          var amountEls = document.querySelectorAll(".approved-amount");
+          amountEls.forEach(function (el) {
+            setTimeout(function () {
+              animateCount(el);
+            }, 350);
+          });
+          startCountdown();
+        });
+      })();
+    </script>
+
+    <script defer src="/_vercel/insights/script.js"></script>
+    <script defer src="/_vercel/speed-insights/script.js"></script>
+  </body>
+</html>
