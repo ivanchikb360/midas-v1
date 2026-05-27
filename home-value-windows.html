@@ -1,0 +1,203 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="See your home value increase from new energy-efficient windows."
+    />
+    <link rel="icon" type="image/x-icon" href="favicon.ico" />
+    <title>2847 Maple Street &middot; Home Value</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body class="zhome-page">
+    <main class="zhome-app" aria-label="Home value summary">
+      <header class="zhome-header">
+        <a class="zhome-brand" href="home-value-windows.html">Zillow</a>
+        <div class="zhome-header-actions">
+          <button type="button" aria-label="Save">
+            <span aria-hidden="true">&#9825;</span>
+            Save
+          </button>
+          <button type="button" aria-label="Share">
+            <span aria-hidden="true">&#10138;</span>
+            Share
+          </button>
+        </div>
+      </header>
+
+      <figure class="zhome-photo">
+        <img src="house.png" alt="2847 Maple Street, Springfield, OH" />
+        <span class="zhome-photo-badge">For Tracking</span>
+        <figcaption>
+          <strong>2847 Maple Street</strong>
+          <span>Springfield, OH 45503</span>
+        </figcaption>
+      </figure>
+
+      <section class="zhome-card" aria-label="Home value increase">
+        <p class="zhome-card-eyebrow">
+          <span aria-hidden="true">&#9650;</span>
+          Home Value Increase
+        </p>
+
+        <strong
+          class="zhome-card-amount"
+          data-target="42000"
+          data-prefix="+$"
+          data-duration="1800"
+          aria-live="polite"
+        >
+          +$0
+        </strong>
+
+        <p class="zhome-card-window">
+          <span aria-hidden="true">&#128197;</span>
+          In the last 30 days
+        </p>
+
+        <p
+          class="zhome-card-percent"
+          data-target="14.1"
+          data-decimals="1"
+          data-prefix="+"
+          data-suffix="%"
+          data-duration="1800"
+        >
+          +0.0%
+        </p>
+
+        <dl class="zhome-card-values">
+          <div>
+            <dt>Previous Value</dt>
+            <dd
+              data-target="698000"
+              data-prefix="$"
+              data-duration="1400"
+            >
+              $0
+            </dd>
+          </div>
+          <div>
+            <dt>Current Value</dt>
+            <dd
+              class="zhome-card-current"
+              data-target="740000"
+              data-prefix="$"
+              data-duration="1800"
+            >
+              $0
+            </dd>
+          </div>
+        </dl>
+
+        <div class="zhome-chart" aria-hidden="true">
+          <svg viewBox="0 0 320 90" preserveAspectRatio="none">
+            <defs>
+              <linearGradient id="zhome-grad-windows" x1="0" x2="0" y1="0" y2="1">
+                <stop offset="0%" stop-color="#22c55e" stop-opacity="0.35" />
+                <stop offset="100%" stop-color="#22c55e" stop-opacity="0" />
+              </linearGradient>
+            </defs>
+            <path
+              class="zhome-chart-fill"
+              d="M0,72 L24,68 L52,64 L80,62 L108,56 L136,52 L164,46 L192,40 L220,34 L248,28 L276,20 L300,14 L320,10 L320,90 L0,90 Z"
+              fill="url(#zhome-grad-windows)"
+            />
+            <path
+              class="zhome-chart-line"
+              d="M0,72 L24,68 L52,64 L80,62 L108,56 L136,52 L164,46 L192,40 L220,34 L248,28 L276,20 L300,14 L320,10"
+              fill="none"
+              stroke="#16a34a"
+              stroke-width="2.5"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+            <circle
+              class="zhome-chart-dot"
+              cx="320"
+              cy="10"
+              r="4"
+              fill="#16a34a"
+            />
+          </svg>
+          <div class="zhome-chart-axis">
+            <span>30d ago</span>
+            <span>Today</span>
+          </div>
+        </div>
+
+        <a class="zhome-cta" href="qualify.html">See full estimate &rarr;</a>
+      </section>
+
+      <p class="zhome-disclaimer">
+        Estimates shown are for demonstration purposes and are not affiliated
+        with or endorsed by Zillow Group, Inc.
+      </p>
+    </main>
+
+    <script>
+      (function () {
+        function easeOutCubic(t) {
+          return 1 - Math.pow(1 - t, 3);
+        }
+
+        function formatValue(value, prefix, suffix, decimals) {
+          var rounded;
+          if (decimals > 0) {
+            rounded = value.toFixed(decimals);
+            var parts = rounded.split(".");
+            parts[0] = parseInt(parts[0], 10).toLocaleString("en-US");
+            rounded = parts.join(".");
+          } else {
+            rounded = Math.round(value).toLocaleString("en-US");
+          }
+          return (prefix || "") + rounded + (suffix || "");
+        }
+
+        function animateCount(el) {
+          var target = parseFloat(el.getAttribute("data-target")) || 0;
+          var duration = parseFloat(el.getAttribute("data-duration")) || 1500;
+          var decimals = parseInt(el.getAttribute("data-decimals") || "0", 10);
+          var prefix = el.getAttribute("data-prefix") || "";
+          var suffix = el.getAttribute("data-suffix") || "";
+          var start = null;
+
+          function step(timestamp) {
+            if (start === null) start = timestamp;
+            var elapsed = timestamp - start;
+            var progress = Math.min(elapsed / duration, 1);
+            var eased = easeOutCubic(progress);
+            el.textContent = formatValue(
+              target * eased,
+              prefix,
+              suffix,
+              decimals
+            );
+            if (progress < 1) {
+              requestAnimationFrame(step);
+            } else {
+              el.textContent = formatValue(target, prefix, suffix, decimals);
+              el.classList.add("zhome-count-done");
+            }
+          }
+
+          requestAnimationFrame(step);
+        }
+
+        document.addEventListener("DOMContentLoaded", function () {
+          var els = document.querySelectorAll("[data-target]");
+          els.forEach(function (el, i) {
+            setTimeout(function () {
+              animateCount(el);
+            }, 250 + i * 120);
+          });
+        });
+      })();
+    </script>
+
+    <script defer src="/_vercel/insights/script.js"></script>
+    <script defer src="/_vercel/speed-insights/script.js"></script>
+  </body>
+</html>
