@@ -907,13 +907,625 @@ body {
 }
 
 .initiative-shell {
-  max-width: 760px;
+  max-width: 1260px;
   margin: 0 auto;
   padding: 40px 22px 56px;
+  display: grid;
+  grid-template-columns: 220px minmax(0, 1fr) 220px;
+  gap: 32px;
+  align-items: start;
 }
 
 .initiative-article {
   text-align: left;
+  max-width: 720px;
+  margin: 0 auto;
+}
+
+.initiative-rail {
+  display: grid;
+  gap: 18px;
+  position: sticky;
+  top: 76px;
+  align-self: start;
+}
+
+/* Generic ad shell */
+.ad {
+  position: relative;
+  background: #ffffff;
+  border: 1px solid #e5e7eb;
+  border-radius: 10px;
+  padding: 14px 14px 14px;
+  font-family: -apple-system, "Helvetica Neue", Arial, sans-serif;
+  font-size: 13px;
+  line-height: 1.45;
+  color: #1f2933;
+  box-shadow: 0 8px 18px rgba(15, 23, 42, 0.05);
+  overflow: hidden;
+}
+
+.ad h3 {
+  margin: 8px 0 6px;
+  font-family: -apple-system, "Helvetica Neue", Arial, sans-serif;
+  font-size: 15px;
+  font-weight: 800;
+  line-height: 1.25;
+  letter-spacing: -0.01em;
+  color: #0f172a;
+}
+
+.ad p {
+  margin: 0 0 10px;
+  font-family: -apple-system, "Helvetica Neue", Arial, sans-serif;
+  font-size: 13px;
+  line-height: 1.5;
+  color: #475569;
+}
+
+.ad a {
+  display: inline-block;
+  font-weight: 800;
+  font-size: 13px;
+  text-decoration: none;
+  color: #1d4ed8;
+}
+
+.ad-label {
+  display: inline-block;
+  background: #f3f4f6;
+  color: #6b7280;
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 3px 6px;
+  border-radius: 3px;
+}
+
+.ad-label-light {
+  background: #fff7ed;
+  color: #c2410c;
+}
+
+.ad-label-blue {
+  background: #dbeafe;
+  color: #1d4ed8;
+}
+
+/* Hearing aids ad */
+.ad-hearing {
+  background: linear-gradient(180deg, #ecfeff 0%, #ffffff 60%);
+  border-color: #cffafe;
+}
+
+.ad-hearing h3 em {
+  font-style: normal;
+  color: #0e7490;
+}
+
+.ad-hearing-art {
+  position: relative;
+  height: 50px;
+  margin: 10px 0 4px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.ad-hearing-ear {
+  font-size: 28px;
+  color: #0e7490;
+  line-height: 1;
+}
+
+.ad-hearing-wave {
+  width: 14px;
+  height: 14px;
+  border: 2px solid #0e7490;
+  border-left-color: transparent;
+  border-bottom-color: transparent;
+  border-radius: 0 50% 0 0;
+  transform: rotate(0deg);
+  opacity: 0.4;
+  animation: hearingWave 1.6s ease-in-out infinite;
+}
+
+.ad-hearing-wave:nth-child(3) {
+  width: 18px;
+  height: 18px;
+  animation-delay: 0.2s;
+}
+
+.ad-hearing-wave:nth-child(4) {
+  width: 22px;
+  height: 22px;
+  animation-delay: 0.4s;
+}
+
+@keyframes hearingWave {
+  0%,
+  100% {
+    opacity: 0.3;
+  }
+  50% {
+    opacity: 0.9;
+  }
+}
+
+/* Walk-in tub ad */
+.ad-tub {
+  background: linear-gradient(180deg, #fff7ed 0%, #ffffff 65%);
+  border-color: #fed7aa;
+}
+
+.ad-tub-badge {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  background: #ea580c;
+  color: #ffffff;
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  padding: 4px 7px;
+  border-radius: 999px;
+  text-transform: uppercase;
+}
+
+.ad-checklist {
+  list-style: none;
+  padding: 0;
+  margin: 4px 0 10px;
+  display: grid;
+  gap: 4px;
+}
+
+.ad-checklist li {
+  position: relative;
+  padding-left: 18px;
+  font-size: 12px;
+  color: #44403c;
+}
+
+.ad-checklist li::before {
+  content: "\2713";
+  position: absolute;
+  left: 0;
+  top: 0;
+  color: #ea580c;
+  font-weight: 900;
+}
+
+.ad-tub-cta {
+  display: block !important;
+  text-align: center;
+  background: #ea580c;
+  color: #ffffff !important;
+  padding: 10px 8px;
+  border-radius: 6px;
+  margin-top: 4px;
+}
+
+/* Medicare ad */
+.ad-medicare {
+  background: linear-gradient(180deg, #eff6ff 0%, #ffffff 65%);
+  border-color: #bfdbfe;
+}
+
+.ad-medicare-flag {
+  display: inline-block;
+  margin: 8px 0 2px;
+  background: #1d4ed8;
+  color: #ffffff;
+  font-size: 10px;
+  font-weight: 900;
+  letter-spacing: 0.08em;
+  padding: 3px 6px;
+  border-radius: 3px;
+}
+
+.ad-medicare h3 strong {
+  color: #1d4ed8;
+  font-size: 17px;
+}
+
+.ad-medicare-cta {
+  display: block !important;
+  text-align: center;
+  background: #1d4ed8;
+  color: #ffffff !important;
+  padding: 10px 8px;
+  border-radius: 6px;
+  margin: 6px 0 6px;
+}
+
+.ad-medicare-note {
+  display: block;
+  color: #b91c1c;
+  font-size: 11px;
+  font-weight: 700;
+  text-align: center;
+}
+
+/* Knee pain ad */
+.ad-knee {
+  background: linear-gradient(180deg, #ffffff 0%, #fafaf9 100%);
+}
+
+.ad-knee-rating {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin: 6px 0 0;
+  font-size: 11px;
+  color: #64748b;
+  font-weight: 600;
+}
+
+.ad-stars {
+  color: #f59e0b;
+  letter-spacing: 1px;
+  font-size: 13px;
+}
+
+/* Life insurance ad */
+.ad-life {
+  background: linear-gradient(180deg, #f0f9ff 0%, #ffffff 65%);
+  border-color: #bae6fd;
+  text-align: center;
+}
+
+.ad-life-price {
+  margin: 6px 0 8px;
+}
+
+.ad-life-amount {
+  display: inline-block;
+  color: #0c4a6e;
+  font-size: 34px;
+  font-weight: 900;
+  letter-spacing: -0.03em;
+  line-height: 1;
+}
+
+.ad-life-amount sup {
+  font-size: 14px;
+  font-weight: 800;
+  vertical-align: super;
+  margin-left: 1px;
+}
+
+.ad-life-unit {
+  color: #475569;
+  font-size: 13px;
+  font-weight: 700;
+  margin-left: 2px;
+}
+
+.ad-life-cta {
+  display: block !important;
+  text-align: center;
+  background: #0369a1;
+  color: #ffffff !important;
+  padding: 10px 8px;
+  border-radius: 6px;
+}
+
+.ad-life-fine {
+  display: block;
+  margin-top: 8px;
+  color: #94a3b8;
+  font-size: 10px;
+  font-style: italic;
+}
+
+/* Reverse mortgage ad */
+.ad-reverse {
+  background: linear-gradient(150deg, #064e3b 0%, #047857 100%);
+  color: #ffffff;
+  border-color: #064e3b;
+}
+
+.ad-reverse .ad-label {
+  background: rgba(255, 255, 255, 0.18);
+  color: #ecfdf5;
+}
+
+.ad-reverse h3,
+.ad-reverse p {
+  color: #ffffff;
+}
+
+.ad-reverse p {
+  color: rgba(255, 255, 255, 0.82);
+}
+
+.ad-reverse-tag {
+  display: inline-block;
+  margin: 8px 0 2px;
+  background: #fbbf24;
+  color: #422006;
+  font-size: 10px;
+  font-weight: 900;
+  letter-spacing: 0.06em;
+  padding: 3px 7px;
+  border-radius: 999px;
+  text-transform: uppercase;
+}
+
+.ad-reverse-cta {
+  display: block !important;
+  text-align: center;
+  background: #fbbf24;
+  color: #422006 !important;
+  padding: 10px 8px;
+  border-radius: 6px;
+}
+
+/* Cruise ad */
+.ad-cruise {
+  background: linear-gradient(180deg, #e0f2fe 0%, #ffffff 70%);
+  border-color: #bae6fd;
+}
+
+.ad-cruise-art {
+  position: relative;
+  height: 50px;
+  margin: 8px -14px 4px;
+  background: linear-gradient(180deg, #38bdf8 0%, #0ea5e9 100%);
+  overflow: hidden;
+}
+
+.ad-cruise-sun {
+  position: absolute;
+  top: 8px;
+  right: 16px;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: #fde68a;
+  box-shadow: 0 0 16px rgba(253, 230, 138, 0.8);
+}
+
+.ad-cruise-wave {
+  position: absolute;
+  bottom: -10px;
+  left: -10px;
+  right: -10px;
+  height: 22px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.5);
+}
+
+.ad-cruise-wave:nth-child(3) {
+  bottom: -16px;
+  background: rgba(255, 255, 255, 0.85);
+}
+
+.ad-cruise-price {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+  margin: 6px 0 6px;
+}
+
+.ad-cruise-was {
+  color: #94a3b8;
+  text-decoration: line-through;
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.ad-cruise-now {
+  color: #0c4a6e;
+  font-size: 20px;
+  font-weight: 900;
+  letter-spacing: -0.02em;
+}
+
+.ad-cruise-cta {
+  display: block !important;
+  text-align: center;
+  background: #0ea5e9;
+  color: #ffffff !important;
+  padding: 10px 8px;
+  border-radius: 6px;
+}
+
+/* Diabetic supplies ad */
+.ad-diabetic {
+  background: linear-gradient(180deg, #f5f3ff 0%, #ffffff 70%);
+  border-color: #ddd6fe;
+}
+
+.ad-diabetic-badge {
+  display: inline-block;
+  margin: 8px 0 2px;
+  background: #7c3aed;
+  color: #ffffff;
+  font-size: 10px;
+  font-weight: 900;
+  letter-spacing: 0.06em;
+  padding: 3px 7px;
+  border-radius: 3px;
+  text-transform: uppercase;
+}
+
+.ad-diabetic-cta {
+  display: block !important;
+  text-align: center;
+  background: #7c3aed;
+  color: #ffffff !important;
+  padding: 10px 8px;
+  border-radius: 6px;
+}
+
+/* Flash offer ad */
+.ad-flash {
+  background: linear-gradient(180deg, #fef2f2 0%, #ffffff 65%);
+  border-color: #fecaca;
+  text-align: center;
+  position: relative;
+}
+
+.ad-flash-pulse {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #dc2626;
+  box-shadow: 0 0 0 0 rgba(220, 38, 38, 0.6);
+  animation: flashPulse 1.4s ease-out infinite;
+}
+
+@keyframes flashPulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(220, 38, 38, 0.6);
+  }
+  100% {
+    box-shadow: 0 0 0 10px rgba(220, 38, 38, 0);
+  }
+}
+
+.ad-flash-timer {
+  margin: 6px 0 8px;
+  color: #dc2626;
+  font-size: 28px;
+  font-weight: 900;
+  letter-spacing: 0.04em;
+  font-variant-numeric: tabular-nums;
+}
+
+.ad-flash-cta {
+  display: block !important;
+  text-align: center;
+  background: #dc2626;
+  color: #ffffff !important;
+  padding: 10px 8px;
+  border-radius: 6px;
+}
+
+/* Sponsored content / Taboola */
+.initiative-taboola {
+  margin: 36px 0 8px;
+  border-top: 1px solid #e5e7eb;
+  padding-top: 20px;
+}
+
+.initiative-taboola h4 {
+  margin: 0 0 14px;
+  font-family: -apple-system, "Helvetica Neue", Arial, sans-serif;
+  font-size: 15px;
+  font-weight: 800;
+  color: #0f172a;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.initiative-taboola h4 span {
+  color: #94a3b8;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.taboola-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+}
+
+.taboola-card {
+  display: block;
+  text-decoration: none;
+  color: inherit;
+  font-family: -apple-system, "Helvetica Neue", Arial, sans-serif;
+}
+
+.taboola-thumb {
+  display: block;
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  border-radius: 6px;
+  margin-bottom: 8px;
+  background-size: cover;
+  background-position: center;
+}
+
+.taboola-thumb-1 {
+  background: linear-gradient(135deg, #fb923c 0%, #b45309 100%);
+  position: relative;
+}
+
+.taboola-thumb-1::after {
+  content: "$19";
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  background: #ffffff;
+  color: #b45309;
+  font-size: 12px;
+  font-weight: 900;
+  padding: 3px 6px;
+  border-radius: 3px;
+}
+
+.taboola-thumb-2 {
+  background: linear-gradient(135deg, #34d399 0%, #065f46 100%);
+}
+
+.taboola-thumb-3 {
+  background: linear-gradient(135deg, #1e3a8a 0%, #0f172a 100%);
+}
+
+.taboola-thumb-4 {
+  background: linear-gradient(135deg, #38bdf8 0%, #0e7490 60%, #fbbf24 100%);
+}
+
+.taboola-card strong {
+  display: block;
+  font-size: 14px;
+  line-height: 1.35;
+  color: #0f172a;
+  font-weight: 700;
+  margin-bottom: 4px;
+}
+
+.taboola-card .taboola-source {
+  display: block;
+  color: #94a3b8;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+}
+
+.taboola-card:hover strong {
+  color: #1d4ed8;
+}
+
+/* Responsive: hide rails on narrower screens */
+@media (max-width: 1180px) {
+  .initiative-shell {
+    grid-template-columns: 200px minmax(0, 1fr) 200px;
+    gap: 24px;
+  }
+}
+
+@media (max-width: 1024px) {
+  .initiative-shell {
+    grid-template-columns: minmax(0, 1fr) 220px;
+    gap: 28px;
+    max-width: 980px;
+  }
+
+  .initiative-rail-left {
+    display: none;
+  }
 }
 
 .initiative-article h1 {
@@ -1084,6 +1696,11 @@ body {
 
   .initiative-shell {
     padding: 28px 18px 44px;
+    grid-template-columns: 1fr;
+  }
+
+  .initiative-rail-right {
+    display: none;
   }
 
   .initiative-article h1 {
@@ -1096,6 +1713,10 @@ body {
 
   .initiative-pullquote {
     font-size: 19px;
+  }
+
+  .taboola-grid {
+    grid-template-columns: 1fr;
   }
 }
 
